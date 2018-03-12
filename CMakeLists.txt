@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.2.2)
 project(0xhexf0rt VERSION 0.0.1 LANGUAGES CXX)
 add_executable(0xhexf0rt src/main.cpp)
 
@@ -17,5 +17,5 @@ target_compile_features(0xhexf0rt
   )
 target_compile_options(0xhexf0rt
   PRIVATE
-  -Wall -Wextra
+  -Wall -Wextra -Werror
   )

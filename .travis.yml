@@ -1,5 +1,35 @@
-sudo: false
+sudo: true
+dist: trusty
 language: cpp
-compiler:
-  - clang
-  - gcc
+
+matrix:
+  include:
+    - compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-6
+      env: COMPILER=g++-6
+    - compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-7
+      env: COMPILER=g++-7
+    - compiler: clang
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - clang++-5
+      env: COMPILER=clang++-5
+
+script:
+  - mkdir build
+  - cd build
+  - cmake .. && make -j2
